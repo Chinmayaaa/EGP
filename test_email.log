@@ -1,0 +1,109 @@
+1                                                          The SAS System                              22:25 Thursday, July 17, 2014
+
+NOTE: Unable to open SASUSER.PROFILE. WORK.PROFILE will be opened instead.
+NOTE: All profile changes will be lost at the end of the session.
+NOTE: Copyright (c) 2002-2010 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.3 (TS1M0) 
+      Licensed to MARRIOTT INTERNATIONAL INC, Site 70032846.
+NOTE: This session is executing on the Linux 2.6.18-371.6.1.el5 (LIN X64) platform.
+
+
+
+WARNING: Your system is scheduled to expire on August 28, 2014, which is 42 days from now. The SAS System will no longer function 
+         on or after that date. Please contact your SAS Installation Representative to obtain your updated SAS Installation Data 
+         (SID) file, which includes SETINIT information.
+To locate the name of your SAS Installation Representative go to http://support.sas.com/repfinder and provide your site number 
+70032846 and company name as MARRIOTT INTERNATIONAL INC. On the SAS REP list provided, locate the REP for operating system LIN X64.
+You are running SAS 9. Some SAS 8 files will be automatically converted 
+by the V9 engine; others are incompatible.  Please see 
+http://support.sas.com/rnd/migration/planning/platform/64bit.html
+
+PROC MIGRATE will preserve current SAS file attributes and is 
+recommended for converting all your SAS libraries from any 
+SAS 8 release to SAS 9.  For details and examples, please see
+http://support.sas.com/rnd/migration/index.html
+
+
+This message is contained in the SAS news file, and is presented upon
+initialization.  Edit the file "news" in the "misc/base" directory to
+display site-specific news and information in the program log.
+The command line option "-nonews" will prevent this display.
+
+
+
+
+NOTE: SAS initialization used:
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+1           data _null_ ;
+WARNING: The Base SAS Software product with which DATASTEP is associated will be expiring soon, and is currently in warning mode to 
+         indicate this upcoming expiration. Please run PROC SETINIT to obtain more information on your warning period.
+2             length msgcmd $10000;
+3             * Send an e-mail including the pdf report as an attachment. *;
+4             msgcmd = 'echo "' ;
+5             msgcmd = trimn(msgcmd) || 'The following properties were filtered out from regression data, or failed regression:' ||
+6          "ABECY,ABERI,ABQCA,ABQMC,ABQNM,ABQRI,AGSCH,AGSMC,ALBNY,AMMJR,AMSNT,AMSRD,ANCDT,ARRMI,ATLAB,ATLAK,ATLAN,ATLAP,ATLAW,ATLBC,
+6        ! ATLBD,ATLBF" ||'.' ;
+7          
+8           msgcmd = trimn(msgcmd) || ' The following properties had records where missing revenue plan apr values were replaced
+8        ! with generic ' ||
+9           "average values, or the default value of 200:" ||
+10         "ABECY,ABERI,ABQCA,ABQMC,ABQNM,ABQRI,AGSCH,AGSMC,ALBNY,AMMJR,AMSNT,AMSRD,ANCDT,ARRMI,ATLAB,ATLAK,ATLAN,ATLAP,ATLAW,ATLBC,
+10       ! ATLBD,ATLBF" ||'.' ;
+11            msgcmd = trimn(msgcmd) ||'"' ;
+12            msgcmd = trimn(msgcmd) ||' | mail -s " EGP Regression Process, '|| "04JUN2014" ||'"';
+13                msgcmd = trim(left(msgcmd)) ||' '|| compress('andrew.hamilton@marriott.com');
+14            put msgcmd = ;
+15            call sysexec(msgcmd);
+16         run;
+
+2                                                          The SAS System                              22:25 Thursday, July 17, 2014
+
+msgcmd=echo "The following properties were filtered out from regression data, or failed regression:ABECY,ABERI,ABQCA,ABQMC,ABQNM,ABQ
+RI,AGSCH,AGSMC,ALBNY,AMMJR,AMSNT,AMSRD,ANCDT,ARRMI,ATLAB,ATLAK,ATLAN,ATLAP,ATLAW,ATLBC,ATLBD,ATLBF. The following properties had rec
+ords where missing revenue plan apr values were replaced with generic average values, or the default value of 200:ABECY,ABERI,ABQCA,
+ABQMC,ABQNM,ABQRI,AGSCH,AGSMC,ALBNY,AMMJR,AMSNT,AMSRD,ANCDT,ARRMI,ATLAB,ATLAK,ATLAN,ATLAP,ATLAW,ATLBC,ATLBD,ATLBF." | mail -s " EGP 
+Regression Process, 04JUN2014" andrew.hamilton@marriott.com
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+17         
+18         
+19         /*
+20         ,ATLBH,ATLCA,ATLCP,ATLCU,ATLDO,ATLEG,ATLEP,ATLGI,ATLGM,ATLHG,ATLJC,ATLJW,ATLKN,ATLLP,ATLMA,ATLMN,ATLMQ,ATLMS,ATLNC,ATLNL,
+20       ! ATLNO,ATLNP
+21         ,ATLPC,ATLPE,ATLPH,ATLPM,ATLPT,ATLRA,ATLRB,ATLRN,ATLSA,ATLSI,ATLSZ,ATLTC,ATLTN,ATLTS,ATLWS,AUAAR,AUABR,AUSAP,AUSNO,AUSSH,
+21       ! AVLAK,AVLBR
+22         ,BDLAP,BDLCT,BDLDT,BDLMA,BDLWD,BDRCT,BFLCH,BFLMC,BFLRI,BFLSH,BHMDW,BHMHM,BHMHV,BHMHW,BHMMC,BHMOX,BHMSC,BHXBH,BJXCY,BLKBP,
+22       ! BMGCY,BMGTL
+23         ,BMIMC,BNAAK,BNAAV,BNABN,BNABR,BNACA,BNACS,BNADT,BNAGI,BNAGO,BNAGV,BNAMF,BNASA,BNASH,BNATN,BOHBM,BOSAD,BOSAV,BOSBU,BOSCB,
+23       ! BOSCM,BOSCO
+24         ,BOSDM,BOSDN,BOSDV,BOSFB,BOSLL,BOSML,BOSNT,BOSNW,BOSPB,BOSPP,BOSPY,BOSQU,BOSST,BOSTD,BOSTT,BOSWB,BOSWE,BOSWF,BRSDT,BTRBB,
+24       ! BTRCH,BTRMC
+25         ,BUEAR,BUFNY,BURAP,BURRI,BVUCH,BVUDT,BWIAN,BWIAP,BWIAW,BWIBU,BWICA,BWICB,BWICL,BWIFM,BWIHU,BWIIH,BWIRA,BWIRI,BWISH,BWISS,
+25       ! BWRAR,CAEMH
+26         ,CAIBR,CAIEG,CAIJW,CBGHD,CHACH,CHADT,CHIAH,CHIAN,CHIAP,CHIAX,CHIBR,CHICA,CHID
+27         
+28         ,ATLBH,ATLCA,ATLCP,ATLCU,ATLDO,ATLEG,ATLEP,ATLGI,ATLGM,ATLHG,ATLJC,ATLJW,ATLKN,ATLLP,ATLMA,ATLMN,ATLMQ,ATLMS,ATLNC,ATLNE,
+28       ! ATLNL,ATLNO
+29         ,ATLNP,ATLPC,ATLPE,ATLPH,ATLPT,ATLRA,ATLRB,ATLRN,ATLSA,ATLSI,ATLSZ,ATLTC,ATLTN,ATLTS,ATLWS,AUAAR,AUABR,AUSAP,AUSNO,AUSSH,
+29       ! AVLAK,AVLBR
+30         ,BDLAP,BDLCT,BDLDT,BDLMA,BDLWD,BDRCT,BFLCH,BFLMC,BFLRI,BFLSH,BHMDW,BHMHM,BHMHO,BHMHV,BHMHW,BHMMC,BHMOX,BHMSC,BHXBH,BJXCY,
+30       ! BLKBP,BMGCY
+31         ,BMGTL,BMIMC,BNAAK,BNAAV,BNABN,BNABR,BNACA,BNACS,BNADT,BNAGI,BNAGO,BNAGV,BNAMF,BNASA,BNASH,BNATN,BOHBM,BOSAD,BOSAV,BOSBU,
+31       ! BOSCB,BOSCM
+32         ,BOSCO,BOSDM,BOSDN,BOSDV,BOSFB,BOSLL,BOSLW,BOSML,BOSNT,BOSNW,BOSPB,BOSPP,BOSPY,BOSQU,BOSST,BOSTD,BOSTT,BOSWB,BOSWE,BOSWF,
+32       ! BRSDT,BRSRY
+33         ,BTRBB,BTRCH,BTRMC,BUEAR,BUFNY,BURAP,BURRI,BVUCH,BVUDT,BWIAN,BWIAP,BWIAW,BWIBU,BWICA,BWICB,BWICL,BWIFM,BWIHU,BWIIH,BWIRA,
+33       ! BWIRI,BWISH
+34         ,BWISS,BWIWF,BWRAR,CAEMH,CAIBR,CAIEG,CAIJW,CBGHD,CHACH,CHADT,CHIAH,CHIAN,CHIA
+35         */
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+      
